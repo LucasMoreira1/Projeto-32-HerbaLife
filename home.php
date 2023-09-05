@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +10,8 @@
 </head>
 <body>
     
+    
     <?php
-    // Start the session (make sure this is included at the beginning of every PHP file)
-    session_start();
-
     // Check if the user is logged in (authenticated)
     if (isset($_SESSION["user_id"]) && isset($_SESSION["username"]) && isset($_SESSION["tenant_codtenant"])) {
         // Display user information
