@@ -29,6 +29,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["username"] = $row["NOME"]; // Replace with your username column
             $_SESSION["tenant_codtenant"] = $row["TENANT_CODTENANT"]; // Add tenant_codtenant to the session
 
+            // Now, let's fetch the company name from the TENANT table
+            $queryTenant = "SELECT NOME FROM TENANT WHERE CODTENANT = ?"; // Adjust the query and table name as per your database schema
+            $stmtTenant = $conn->prepare($queryTenant);
+            $stmtTenant->bind_param("i", $_SESSION["tenant_codtenant"]); // Assuming CODTENANT is an integer
+            $stmtTenant->execute();
+            $resultTenant = $stmtTenant->get_result();
+
+            if ($resultTenant->num_rows == 1) {
+                $rowTenant = $resultTenant->fetch_assoc();
+                $_SESSION["tenant_name"] = $rowTenant["NOME"]; // Store company name in the session
+            }
+
             // Redirect to the home page or any other desired page
             header("Location: home.php");
             exit();
@@ -40,6 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // User with the provided email doesn't exist
         echo "User not found. Please check your email and try again.";
     }
+
 
     // Close the database connection
     $stmt->close();
