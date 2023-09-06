@@ -1,13 +1,13 @@
 // Get references to the buttons and content area
 const createCustomerBtn = document.getElementById("createCustomerBtn");
-const findCustomerBtn = document.getElementById("findCustomerBtn");
-const createProductBtn = document.getElementById("createProductBtn");
+const clientesBtn = document.getElementById("clientesBtn");
+const estoqueBtn = document.getElementById("estoqueBtn");
 const contentArea = document.querySelector(".content");
 
 // Add event listeners to the buttons
 createCustomerBtn.addEventListener("click", () => {
     // Load the "createCustomer.html" template
-    fetch("createCustomer.html")
+    fetch("pages/createCustomer.html")
         .then(response => response.text())
         .then(data => {
             // Display the content in the content area
@@ -15,9 +15,9 @@ createCustomerBtn.addEventListener("click", () => {
         });
 });
 
-findCustomerBtn.addEventListener("click", () => {
+clientesBtn.addEventListener("click", () => {
     // Load the "findCustomer.html" template
-    fetch("findCustomer.html")
+    fetch("pages/clientes.html")
         .then(response => response.text())
         .then(data => {
             // Display the content in the content area
@@ -25,9 +25,9 @@ findCustomerBtn.addEventListener("click", () => {
         });
 });
 
-createProductBtn.addEventListener("click", () => {
+estoqueBtn.addEventListener("click", () => {
     // Load the "createProduct.html" template
-    fetch("createProduct.html")
+    fetch("pages/estoque.html")
         .then(response => response.text())
         .then(data => {
             // Display the content in the content area
