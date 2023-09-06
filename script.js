@@ -34,3 +34,13 @@ createProductBtn.addEventListener("click", () => {
             contentArea.innerHTML = data;
         });
 });
+
+function toggleSidebar() {
+    // Get the sidebar element by ID
+    const sidebar = document.getElementById("logo-sidebar");
+
+    // Toggle Tailwind CSS classes to control the sidebar's visibility
+    sidebar.classList.toggle("hidden");
+    sidebar.classList.toggle("md:block"); // For desktop view
+    sidebar.classList.toggle("md:w-64"); // For desktop view
+}

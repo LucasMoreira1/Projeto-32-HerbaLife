@@ -26,8 +26,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($enteredPassword === $storedPassword) {
             // Password is correct, store user information in session
             $_SESSION["user_id"] = $row["CODLOGIN"]; // Replace with your user identifier column
-            $_SESSION["email"] = $row["EMAIL"];
             $_SESSION["username"] = $row["NOME"]; // Replace with your username column
+            $_SESSION["email"] = $row["EMAIL"];
+            $_SESSION["profilePicture"] = $row["FOTO"]; // Replace with your username column
             $_SESSION["tenant_codtenant"] = $row["TENANT_CODTENANT"]; // Add tenant_codtenant to the session
 
             // Now, let's fetch the company name from the TENANT table
