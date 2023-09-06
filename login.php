@@ -26,6 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($enteredPassword === $storedPassword) {
             // Password is correct, store user information in session
             $_SESSION["user_id"] = $row["CODLOGIN"]; // Replace with your user identifier column
+            $_SESSION["email"] = $row["EMAIL"];
             $_SESSION["username"] = $row["NOME"]; // Replace with your username column
             $_SESSION["tenant_codtenant"] = $row["TENANT_CODTENANT"]; // Add tenant_codtenant to the session
 
