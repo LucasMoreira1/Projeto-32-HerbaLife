@@ -97,10 +97,6 @@ function totalFirstProd() {
         // Calculate the total price
         const totalPrice = quantity * price;
 
-        console.log("Quantity:", quantity);
-        console.log("Price:", price);
-        console.log("Total Price:", totalPrice);
-
         // Format the total price as "R$X,XX"
         const formattedTotalPrice = "R$" + totalPrice.toFixed(2).replace('.', ',');
 
@@ -130,10 +126,6 @@ function totalSecondProd() {
 
         // Calculate the total price
         const totalPrice2 = quantity2 * price2;
-
-        console.log("Quantity:", quantity2);
-        console.log("Price:", price2);
-        console.log("Total Price:", totalPrice2);
 
         // Format the total price as "R$X,XX"
         const formattedTotalPrice2 = "R$" + totalPrice2.toFixed(2).replace('.', ',');
@@ -165,10 +157,6 @@ function totalThirdProd() {
         // Calculate the total price
         const totalPrice3 = quantity3 * price3;
 
-        console.log("Quantity:", quantity3);
-        console.log("Price:", price3);
-        console.log("Total Price:", totalPrice3);
-
         // Format the total price as "R$X,XX"
         const formattedTotalPrice3 = "R$" + totalPrice3.toFixed(2).replace('.', ',');
 
@@ -182,3 +170,4 @@ function totalThirdProd() {
     // Initial calculation (if needed)
     updateTotalPrice3();
 }
+
