@@ -77,9 +77,15 @@ function initPDVPage() {
     totalFirstProd()
     totalSecondProd()
     totalThirdProd()  
-    
 
 }
+
+const firstProductQuantity = [];
+const firstProductPrice = [];
+const secondProductQuantity = [];
+const secondProductPrice = [];
+const thirdProductQuantity = [];
+const thirdProductPrice = [];
 
 function totalFirstProd() {
     const quantityInput = document.getElementById("first_product");
@@ -102,13 +108,20 @@ function totalFirstProd() {
 
         // Update the total price cell with the formatted result
         totalPriceCell.innerText = formattedTotalPrice;
+
+        firstProductQuantity.push(quantity);
+        firstProductPrice.push(price);
     }
 
     // Add an event listener to the quantity input to trigger the calculation when it changes
-    quantityInput.addEventListener("input", updateTotalPrice);
+    quantityInput.addEventListener("input", () => {
+        updateTotalPrice();
+        updateTotalFooter();
+    });
 
     // Initial calculation (if needed)
     updateTotalPrice();
+    updateTotalFooter();
 }
 
 function totalSecondProd() {
@@ -132,13 +145,19 @@ function totalSecondProd() {
 
         // Update the total price cell with the formatted result
         totalPriceCell2.innerText = formattedTotalPrice2;
+        
+        secondProductQuantity.push(quantity2);
+        secondProductPrice.push(price2);
     }
 
     // Add an event listener to the quantity input to trigger the calculation when it changes
-    quantityInput2.addEventListener("input", updateTotalPrice2);
-
+    quantityInput2.addEventListener("input", () => {
+        updateTotalPrice2();
+        updateTotalFooter();
+    });
     // Initial calculation (if needed)
     updateTotalPrice2();
+    updateTotalFooter();
 }
 
 function totalThirdProd() {
@@ -162,12 +181,34 @@ function totalThirdProd() {
 
         // Update the total price cell with the formatted result
         totalPriceCell3.innerText = formattedTotalPrice3;
+
+        thirdProductQuantity.push(quantity3);
+        thirdProductPrice.push(price3);
     }
 
     // Add an event listener to the quantity input to trigger the calculation when it changes
-    quantityInput3.addEventListener("input", updateTotalPrice3);
-
+    quantityInput3.addEventListener("input", () => {
+        updateTotalPrice3();
+        updateTotalFooter();
+    });
     // Initial calculation (if needed)
     updateTotalPrice3();
+    updateTotalFooter();
 }
+
+function updateTotalFooter() {
+    // Calculate total quantity and total price for each product
+    const totalQuantityFirst = firstProductQuantity.reduce((acc, val) => acc + val, 0);
+    const totalQuantitySecond = secondProductQuantity.reduce((acc, val) => acc + val, 0);
+    const totalQuantityThird = thirdProductQuantity.reduce((acc, val) => acc + val, 0);
+
+    const totalPriceFirst = firstProductPrice.reduce((acc, val) => acc + val, 0);
+    const totalPriceSecond = secondProductPrice.reduce((acc, val) => acc + val, 0);
+    const totalPriceThird = thirdProductPrice.reduce((acc, val) => acc + val, 0);
+
+    // Update the footer cells with the calculated totals
+    document.getElementById("totalQuantidade").textContent = totalQuantityFirst + totalQuantitySecond + totalQuantityThird;
+    document.getElementById("totalGeral").textContent = "R$" + (totalPriceFirst + totalPriceSecond + totalPriceThird).toFixed(2);
+}
+
 
